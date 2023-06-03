@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es" >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!--  Prevent admin panel being crawled by search engines -->
+    <meta name="robots" content="none, noarchive">
+
+    <title>Modificar dojo | SMS Natura</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/static/vendor/fontawesome-free/css/all.min.css">
+
+    <!-- Bootstrap and adminLTE -->
+    <link rel="stylesheet" href="/static/vendor/adminlte/css/adminlte.min.css" id="adminlte-css">
+
+    <!-- Bootswatch theme -->
+
+        <link rel="stylesheet" href="/static/vendor/bootswatch/flatly/bootstrap.min.css" id="jazzmin-theme" />
+
+
+
+
+    <!-- Custom fixes for django -->
+    <link rel="stylesheet" href="/static/jazzmin/css/main.css">
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/custom.css">
+
+
+    <!-- favicons -->
+    <link rel="shortcut icon" href="/static/sei_l.png" type="image/png">
+    <link rel="icon" href="/static/sei_l.png" sizes="32x32" type="image/png">
+
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+
+
+    <link rel="stylesheet" href="/static/vendor/select2/css/select2.min.css">
+
+
+
+    <script type="text/javascript" src="/es/admin/jsi18n/"></script>
+    <script src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script src="/static/admin/js/jquery.init.js"></script>
+<script src="/static/admin/js/core.js"></script>
+<script src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script src="/static/admin/js/actions.js"></script>
+<script src="/static/admin/js/urlify.js"></script>
+<script src="/static/admin/js/prepopulate.js"></script>
+<script src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+<script src="/static/import_export/action_formats.js"></script>
+
+</head>
+<!-- jQuery -->
+<script src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/vendor/adminlte/js/adminlte.min.js"></script>
+<!-- Django customisations -->
+<script src="/static/jazzmin/js/main.js"></script>
+
+
+
+
+
+
+
+    <script type="text/javascript" src="/static/vendor/select2/js/select2.min.js"></script>
+    <script type="text/javascript" src="/static/jazzmin/js/change_form.js"></script>
+<body>
+    <div class="container">
+    <form class="well form-horizontal" method="post"  id="contact_form">
+    <fieldset>
+<br>
+
+<!-- Form Name -->
+<legend><center><h2><b>Formulario de Registro</b></h2></center></legend><br>
+
+    {% csrf_token %}
+  <p>
+    <label for="id_username">Nombre de usuario:</label>
+    <input type="text" name="username" class="form-control" maxlength="50" autocapitalize="none" autocomplete="username" required id="id_username">
+
+      <span class="helptext">Requerido. Únicamente letras, dígitos y @/./+/-/_ </span>
+
+  </p>
+
+
+  <p>
+    <label for="id_first_name">Nombre:</label>
+    <input type="text" name="first_name" maxlength="150" id="id_first_name">
+
+
+  </p>
+
+
+  <p>
+    <label  ="id_last_name">Apellidos:</label>
+    <input type="text" name="last_name" maxlength="150" id="id_last_name">
+
+
+  </p>
+
+
+  <p>
+    <label for="id_email">Dirección de correo electrónico:</label>
+    <input type="email" name="email" maxlength="254" autofocus required id="id_email">
+
+
+  </p>
+
+
+  <p>
+    <label for="id_numero_telefono">Número de teléfono:</label>
+    <input type="text" name="numero_telefono" maxlength="10" required id="id_numero_telefono">
+
+
+  </p>
+
+
+  <p>
+    <label for="id_password1">Contraseña:</label>
+    <input type="password" name="password1" autocomplete="new-password" required id="id_password1">
+
+      <span class="helptext"><ul><li>Su contraseña no puede asemejarse tanto a su otra información personal.</li><li>Su contraseña debe contener al menos 8 caracteres.</li><li>Su contraseña no puede ser una clave utilizada comúnmente.</li><li>Su contraseña no puede ser completamente numérica.</li></ul></span>
+
+
+  </p>
+
+
+  <p>
+    <label for="id_password2">Contraseña (confirmación):</label>
+    <input type="password" name="password2" autocomplete="new-password" required id="id_password2">
+
+      <span class="helptext">Para verificar, introduzca la misma contraseña anterior.</span>
+
+
+  </p>
+
+
+  <p>
+    <label for="id_codigo_registro">Codigo registro:</label>
+    <input type="text" name="codigo_registro" maxlength="50" required id="id_codigo_registro">
+
+
+
+
+  </p>
+   <button type="submit" class="btn btn-primary">Sign Up</button>
+    </fieldset>
+    </form>
+    </div>
+
+</body>
+</html>

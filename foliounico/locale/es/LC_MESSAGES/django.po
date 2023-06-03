@@ -1,0 +1,2 @@
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr "Gracias por pasar tiempo de calidad con el sitio web hoy."

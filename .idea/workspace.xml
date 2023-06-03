@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e1a37aa4-08e6-4aa9-a7c7-c898af82aaa2" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Python Script" />
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+    <option name="myAllFileTypesSelected" value="false" />
+    <option name="mySelectedFileTypes">
+      <set>
+        <option value="Python" />
+        <option value="SQL" />
+        <option value="Shell Script" />
+      </set>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectId" id="2O4Fo1O6hGGV0eK0svIXy72CEM6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/josearturoramirezperez/karateapp/foliounico/karate/templates",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "run.code.analysis.last.selected.profile": "aDefault",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/foliounico/karate/templates" />
+      <recent name="$PROJECT_DIR$/foliounico/static" />
+      <recent name="$PROJECT_DIR$/foliounico/staticfiles" />
+      <recent name="$PROJECT_DIR$/foliounico/karate" />
+      <recent name="$PROJECT_DIR$/foliounico/recicladora/templates/admin" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e1a37aa4-08e6-4aa9-a7c7-c898af82aaa2" name="Changes" comment="" />
+      <created>1680812118414</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680812118414</updated>
+      <workItem from="1680812119546" duration="16867000" />
+      <workItem from="1680888994944" duration="15478000" />
+      <workItem from="1681067668583" duration="23868000" />
+      <workItem from="1681319922014" duration="3010000" />
+      <workItem from="1681502719141" duration="41830000" />
+      <workItem from="1682272765448" duration="1974000" />
+      <workItem from="1682274802930" duration="346000" />
+      <workItem from="1682276239436" duration="25000" />
+      <workItem from="1682277485669" duration="623000" />
+      <workItem from="1682387871206" duration="5398000" />
+      <workItem from="1682532003625" duration="3277000" />
+      <workItem from="1682604800063" duration="9412000" />
+      <workItem from="1682702958079" duration="94145000" />
+      <workItem from="1683171399861" duration="2021000" />
+      <workItem from="1683202449150" duration="67249000" />
+      <workItem from="1683506796611" duration="3145000" />
+      <workItem from="1683662067375" duration="3476000" />
+      <workItem from="1684114476102" duration="6028000" />
+      <workItem from="1684430427266" duration="843000" />
+      <workItem from="1684436396376" duration="12038000" />
+      <workItem from="1684461232604" duration="17000" />
+      <workItem from="1684461275596" duration="132000" />
+      <workItem from="1684463648843" duration="7422000" />
+      <workItem from="1684505459933" duration="15845000" />
+      <workItem from="1684802360460" duration="90923000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
