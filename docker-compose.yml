@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:14.1-alpine
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Folio_Unico_2022
+  web:
+    build: .
+    command: gunicorn foliounico.wsgi -c gunicorn.py.ini
+    volumes:
+      - ./foliounico:/foliounico
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/etc/letsencrypt:/etc/letsencrypt"
+    hostname: app.seishinkan.com.mx
+    ports:
+      - "8000:8000"
+    environment:
+      - "TZ: America/Mexico_City"
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Folio_Unico_2022
+
+    depends_on:
+      - db
