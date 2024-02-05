@@ -26,7 +26,7 @@ class SignupForm(UserCreationForm):
     codigo_registro = forms.CharField(max_length=8, widget=forms.TextInput(attrs={'placeholder': 'Codigo'}))
     first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Nombre / Nombres'}))
     last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Apellidos'}))
-    fecha_de_nacimiento = forms.DateField(required=True, widget=forms.DateInput(attrs={'placeholder': 'Fecha Nacimiento', 'type': 'date'}))
+    fecha_de_nacimiento = forms.DateField(required=True, label='Fecha de Nacimiento', widget=forms.DateInput(attrs={'placeholder': 'Fecha Nacimiento', 'type': 'date'}))
     estatura = forms.DecimalField(decimal_places=2, widget=forms.NumberInput(
             attrs={
                 'placeholder': 'Estatura Mts.',
