@@ -27,10 +27,22 @@ class SignupForm(UserCreationForm):
     first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Nombre / Nombres'}))
     last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Apellidos'}))
     fecha_de_nacimiento = forms.DateField(required=True, widget=forms.DateInput(attrs={'type': 'date'}))
-    estatura = forms.DecimalField(decimal_places=2, widget=forms.TextInput(
-        attrs={'placeholder': 'Estatura Mts.'}))
-    peso = forms.DecimalField(decimal_places=2, widget=forms.TextInput(
-        attrs={'placeholder': 'Peso Kg.'}))
+    estatura = forms.DecimalField(decimal_places=2, widget=forms.NumberInput(
+            attrs={
+                'placeholder': 'Estatura Mts.',
+                'step': '0.01',  # Permite valores decimales
+                'min': '0',  # Valor mínimo, ajusta según necesidad
+                'type': 'number',  # Asegura que solo se acepten números
+            }
+        ))
+    peso = forms.DecimalField(decimal_places=2, widget=forms.NumberInput(
+            attrs={
+                'placeholder': 'Peso Kg.',
+                'step': '0.01',  # Permite valores decimales
+                'min': '0',  # Valor mínimo, ajusta según necesidad
+                'type': 'number',  # Asegura que solo se acepten números
+            }
+        ))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
     numero_telefono = forms.CharField(
         max_length=10,
