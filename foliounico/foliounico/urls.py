@@ -33,4 +33,5 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += i18n_patterns(
     path(_('admin/'), admin.site.urls),
+    path('karate/', include('karate.urls')),
 )

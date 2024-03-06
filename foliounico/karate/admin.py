@@ -1,12 +1,18 @@
 # Register your models here.
-
+from functools import wraps
 
 from django.contrib import admin
+from django.contrib.admin import AdminSite
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.views import LoginView
+from django.http import HttpResponseForbidden, HttpResponseRedirect
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from import_export.admin import ExportActionMixin
 
+from .enums import Rol
 from .forms import RegistroUsuarioForm
 from .models import CodigoResgistro
 from .models import CustomUser
@@ -16,6 +22,34 @@ from .models import ResgistroExamen
 from .models import ResgistroTorneo
 from .models import Torneo
 
+def restrict_access_to_role(view_func):
+    @wraps(view_func)
+    def _wrapped_view(self, request, *args, **kwargs):
+        # Verificar si el usuario tiene el rol adecuado
+        if request.user.is_authenticated and request.user.rol == Rol.ALUMNO:
+            # Restringir el acceso si el usuario es un alumno
+            return HttpResponseForbidden("Acceso denegado.")
+        # Permitir acceso si el usuario tiene otros roles o no está autenticado
+        return view_func(self, request, *args, **kwargs)
+    return _wrapped_view
+
+#class CustomLoginView(LoginView):
+#    def get_success_url(self):
+#        # Redirige a /es-mx/admin/ después del inicio de sesión
+#        return reverse_lazy('admin:index')
+
+# Registra la vista personalizada de inicio de sesión
+#admin.site.login = CustomLoginView.as_view()
+
+
+@admin.site.admin_view
+def custom_logout(request):
+    auth_logout(request)
+    # Redirige a donde quieras después del cierre de sesión, por ejemplo, al login.
+    return HttpResponseRedirect('/')  # Ajusta la redirección según tus necesidades
+
+
+admin.site.logout = custom_logout
 
 class RegistroUsuarioAdmin(BaseUserAdmin):
     form = RegistroUsuarioForm
@@ -150,7 +184,12 @@ class RegsitroDeExamenAdmin(ExportActionMixin, admin.ModelAdmin):
     def examen_nombre(self, obj):
         return obj.Examen.nombre_del_examen
 
+    @restrict_access_to_role
+    def has_view_permission(self, request, obj=None):
+        return super().has_view_permission(request, obj)
+
     examen_fecha.short_description = 'Fecha del Examen'  # Set the column header name
+
 
 
 admin.site.site_header = "Seishinkan"
