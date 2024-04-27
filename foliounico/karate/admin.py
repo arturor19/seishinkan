@@ -151,7 +151,7 @@ class RegistroTorneoAdmin(ExportActionMixin, admin.ModelAdmin):
             queryset = queryset.filter(Alumno=current_user)
         elif current_user.rol == Rol.SENSEI:
             # Filtrar los registros por el usuario actual
-            queryset = queryset.filter(Torneo__dojo=current_user.dojo)
+            queryset = queryset.filter(Alumno__dojo=current_user.dojo)
         elif current_user.rol == Rol.ADMINISTRADOR:
             # Obtener los registros
             queryset = queryset.all()
@@ -210,13 +210,20 @@ class RegsitroDeExamenAdmin(ExportActionMixin, admin.ModelAdmin):
         if current_user.rol == Rol.ALUMNO:
             # Filtrar los registros por el usuario actual
             queryset = queryset.filter(Alumno=current_user)
+        # Filtrar los registros por dojo de acuerdo al sensei y alumnos considerando que resgistro de examen no tiene dojo
         elif current_user.rol == Rol.SENSEI:
             # Filtrar los registros por el usuario actual
-            queryset = queryset.filter(Examen__dojo=current_user.dojo)
+            queryset = queryset.filter(Alumno__dojo=current_user.dojo)
         elif current_user.rol == Rol.ADMINISTRADOR:
             # Obtener los registros
             queryset = queryset.all()
         return queryset
+
+    # crear un metodo para que el sensei  pueda crear y modificar los examenes de su dojo
+    def save_model(self, request, obj, form, change):
+        if request.user.rol == Rol.SENSEI:
+            obj.dojo = request.user.dojo
+        obj.save()
 
 
 admin.site.site_header = "Seishinkan"
