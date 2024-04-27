@@ -141,6 +141,22 @@ class RegistroTorneoAdmin(ExportActionMixin, admin.ModelAdmin):
     def lugar(self, obj):
         return obj.ResgistroTorneo.lugar
 
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        # Obtener el usuario actual
+        current_user = request.user
+        # Verificar si el usuario es un alumno
+        if current_user.rol == Rol.ALUMNO:
+            # Filtrar los registros por el usuario actual
+            queryset = queryset.filter(Alumno=current_user)
+        elif current_user.rol == Rol.SENSEI:
+            # Filtrar los registros por el usuario actual
+            queryset = queryset.filter(Torneo__dojo=current_user.dojo)
+        elif current_user.rol == Rol.ADMINISTRADOR:
+            # Obtener los registros
+            queryset = queryset.all()
+        return queryset
+
 
 """
 para las notificaciones 
@@ -184,12 +200,23 @@ class RegsitroDeExamenAdmin(ExportActionMixin, admin.ModelAdmin):
     def examen_nombre(self, obj):
         return obj.Examen.nombre_del_examen
 
-    @restrict_access_to_role
-    def has_view_permission(self, request, obj=None):
-        return super().has_view_permission(request, obj)
-
     examen_fecha.short_description = 'Fecha del Examen'  # Set the column header name
 
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        # Obtener el usuario actual
+        current_user = request.user
+        # Verificar si el usuario es un alumno
+        if current_user.rol == Rol.ALUMNO:
+            # Filtrar los registros por el usuario actual
+            queryset = queryset.filter(Alumno=current_user)
+        elif current_user.rol == Rol.SENSEI:
+            # Filtrar los registros por el usuario actual
+            queryset = queryset.filter(Examen__dojo=current_user.dojo)
+        elif current_user.rol == Rol.ADMINISTRADOR:
+            # Obtener los registros
+            queryset = queryset.all()
+        return queryset
 
 
 admin.site.site_header = "Seishinkan"
