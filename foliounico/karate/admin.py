@@ -139,7 +139,7 @@ class RegistroTorneoAdmin(ExportActionMixin, admin.ModelAdmin):
         return obj.Torneo.fecha_del_torneo
 
     def lugar(self, obj):
-        return obj.ResgistroTorneo.lugar
+        return obj.Torneo.ubicacion_maps
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
@@ -156,6 +156,16 @@ class RegistroTorneoAdmin(ExportActionMixin, admin.ModelAdmin):
             # Obtener los registros
             queryset = queryset.all()
         return queryset
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "Alumno" and request.user.rol == Rol.SENSEI:
+            # Obtener el usuario actual
+            current_user = request.user
+
+            # Filtrar los alumnos por el dojo del usuario actual
+            kwargs["queryset"] = CustomUser.objects.filter(dojo=current_user.dojo)
+
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
 """
@@ -224,6 +234,16 @@ class RegsitroDeExamenAdmin(ExportActionMixin, admin.ModelAdmin):
         if request.user.rol == Rol.SENSEI:
             obj.dojo = request.user.dojo
         obj.save()
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "Alumno" and request.user.rol == Rol.SENSEI:
+            # Obtener el usuario actual
+            current_user = request.user
+
+            # Filtrar los alumnos por el dojo del usuario actual
+            kwargs["queryset"] = CustomUser.objects.filter(dojo=current_user.dojo)
+
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
 admin.site.site_header = "Seishinkan"
