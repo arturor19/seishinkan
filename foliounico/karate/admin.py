@@ -76,6 +76,29 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('email',)
 
+    def get_fieldsets(self, request, obj=None):
+        if request.user.rol == Rol.SENSEI:
+            return (
+                (None, {'fields': ('email','password',)}),
+                (_('Información Karate'), {'fields': ('fecha_de_nacimiento', 'numero_telefono', 'dojo', 'cinta', 'rol')}),
+            )
+        return super().get_fieldsets(request, obj=obj)
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        # Obtener el usuario actual
+        current_user = request.user
+        # Verificar si el usuario es un alumno
+        if current_user.rol == Rol.ALUMNO:
+            # Filtrar los registros por el usuario actual
+            queryset = queryset.filter(id=current_user.id)
+        elif current_user.rol == Rol.SENSEI:
+            # Filtrar los registros por el usuario actual
+            queryset = queryset.filter(dojo=current_user.dojo)
+        elif current_user.rol == Rol.ADMINISTRADOR:
+            # Obtener los registros
+            queryset = queryset.all()
+        return queryset
+
 
 @admin.register(Dojo)
 class DojoAdmin(ExportActionMixin, admin.ModelAdmin):
