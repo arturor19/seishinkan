@@ -97,6 +97,8 @@ class UserAdmin(BaseUserAdmin):
         elif current_user.rol == Rol.ADMINISTRADOR:
             # Obtener los registros
             queryset = queryset.all()
+        elif current_user.is_superuser:
+            queryset = queryset.all()
         return queryset
 
 
