@@ -72,8 +72,8 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('email', 'password1', 'password2', 'first_name', 'last_name',),
         }),
     )
-    list_display = ['email', 'first_name', 'last_name', 'username', 'is_staff', "numero_telefono"]
-    search_fields = ('email', 'first_name', 'last_name')
+    list_display = ['email', 'first_name', 'last_name', 'username', 'is_staff', "numero_telefono", 'dojo_nombre']
+    search_fields = ('email', 'first_name', 'last_name', 'dojo__nombre_dojo')
     ordering = ('email',)
 
     def get_fieldsets(self, request, obj=None):
@@ -121,6 +121,11 @@ class DojoAdmin(ExportActionMixin, admin.ModelAdmin):
 class ResitroDeCodigos(ExportActionMixin, admin.ModelAdmin):
     list_display = [
         'id',
+        'dojo',
+        'rol',
+    ]
+
+    list_filter = [
         'dojo',
         'rol',
     ]

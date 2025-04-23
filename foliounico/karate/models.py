@@ -26,9 +26,8 @@ class ShortUUIDField(models.CharField):
 class Dojo(models.Model):
     nombre_dojo = models.CharField(max_length=50, help_text="Nombre del dojo")
     calle = models.CharField(max_length=50, help_text="Calle")
-    numero_exterior = models.CharField(max_length=15, help_text="Calle", verbose_name="Numero exterior")
-    numero_interior = models.CharField(max_length=15, help_text="Calle", verbose_name="Numero interior", blank=True,
-                                       null=True)
+    numero_exterior = models.CharField(max_length=15, help_text="Numero exterior")
+    numero_interior = models.CharField(max_length=15, help_text="Numero interior", blank=True, null=True)
     colonia = models.CharField(max_length=50, help_text="Colonia", blank=True, null=True)
     codigo_postal = models.IntegerField()
     ciudad = models.CharField(max_length=50, help_text="Ciudad")
@@ -36,7 +35,7 @@ class Dojo(models.Model):
     ubicacion_maps = models.URLField(max_length=200, verbose_name="Link ubicación maps")
 
     def __str__(self):
-        return f"{self.nombre_dojo}"
+        return self.nombre_dojo
 
 
 class CodigoResgistro(models.Model):
@@ -79,6 +78,10 @@ class CustomUser(AbstractUser):
             count += 1
             username = f"{self.first_name.lower()}.{self.last_name.lower()}.{count}".replace(" ", "")
         return username
+
+    @property
+    def dojo_nombre(self):
+        return self.dojo.nombre_dojo if self.dojo else 'N/A'
 
     def __str__(self):
         return f"{self.nombre_completo} ({self.email})"
